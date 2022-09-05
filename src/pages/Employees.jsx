@@ -11,10 +11,16 @@ import {
 
 import { employeesGrid, employeesData } from "../data/dummy";
 import { Header } from "../components";
+import { useStateContext } from "../contexts/ContextProvider";
 
 const Employees = () => {
+  const { currentMode } = useStateContext();
   return (
-    <div className="m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl">
+    <div
+      className={`m-2 md:m-10 p-2 md:p-10 rounded-3xl ${
+        currentMode === "Dark" ? "bg-black text-white" : "bg-white"
+      }`}
+    >
       <Header category="page" title="Employees" />
       <GridComponent
         dataSource={employeesData}

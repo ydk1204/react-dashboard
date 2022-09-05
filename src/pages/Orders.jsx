@@ -14,12 +14,18 @@ import {
   Inject,
 } from "@syncfusion/ej2-react-grids";
 
-import { ordersData, contextMenuItems, ordersGrid } from "../data/dummy";
+import { ordersData, ordersGrid } from "../data/dummy";
 import { Header } from "../components";
+import { useStateContext } from "../contexts/ContextProvider";
 
 const Orders = () => {
+  const { currentMode } = useStateContext();
   return (
-    <div className="m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl">
+    <div
+      className={`m-2 md:m-10 p-2 md:p-10 rounded-3xl ${
+        currentMode === "Dark" ? "bg-black text-white" : "bg-white"
+      }`}
+    >
       <Header category="page" title="Orders" />
       <GridComponent
         id="gridcomp"
